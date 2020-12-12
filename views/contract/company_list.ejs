@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head2.ejs") %>
+    <title>D&D project main</title>
+  </head>
+  <script>
+    function contract_list(){
+      location.href="/contract/list";
+    }
+  </script>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header>
+        <%- include ("../reference/menu.ejs") %>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="paymentCompany">
+            <h1>View contract</h1>
+            <div class="payBlackboard">
+                <h2>Company list</h2>
+                <div class=content>
+                        <table>
+                          <tr>
+                            <th>#</th>
+                            <th>회사명</th>
+                            <th>계약 담당자</th>
+                            <th>계약건수</th>
+                        
+                          </tr>
+                            <tr style="cursor: pointer;" onclick="contract_list()">
+                             <td>1</td>
+                             <td>보광체인코딩</td>
+                             <td>김승빈</td>
+                             <td>35</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>양재건설</td>
+                                <td>최영욱</td>
+                                <td>23</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>서초건설</td>
+                                <td>이윤호</td>
+                                <td>15</td>
+                            </tr>
+                        </table>
+                    </div>
+                 </div>
+            </body>
+        </body>
+        </div>
+        </div>
+        </div>  
+      </div>
+    </section>
+    <!--end main section-->
+  </body>
+</html>

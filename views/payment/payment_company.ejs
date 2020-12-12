@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head.ejs") %>
+    <title>D&D project main</title>
+  </head>
+  <script>
+    function list_view(){
+      location.href="/payment/list"
+    }
+  </script>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header>
+        <%- include ("../reference/menu.ejs") %>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="paymentList">
+            <h1>Payment</h1>
+            <div class="paylistBlackboard">
+                <h2>Payment list</h2>
+                <div class=content>
+                        <table>
+                          <tr>
+                            <th>#</th>
+                            <th>회사명</th>
+                            <th>계약 담당자</th>
+                            <th>대금신청일</th>
+                            <th>기성금</th>
+                            <th>예외금</th>
+                          </tr>
+                            <tr onclick="list_view()">
+                            <!-- 첫번째 줄 시작 -->
+                             <td>1</td>
+                             <td>삼성중공업</td>
+                             <td>김승빈</td>
+                             <td>2020.09.24</td>
+                             <td>123,000,000 원</td>
+                             <td>3,000,000,000 원</td>
+                            </tr><!-- 두번째 줄 끝 -->
+                            <tr>
+                            <td>2</td>
+                             <td>보광체인코팅</td>
+                             <td>김승빈</td>
+                             <td>2020.07.24</td>
+                             <td>5,100,000,000 원</td>
+                             <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                 </div>
+            </body>
+        </body>
+        </div>
+        </div>
+        </div>  
+      </div>
+    </section>
+    <!--end main section-->
+  </body>
+</html>

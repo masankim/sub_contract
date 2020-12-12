@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head.ejs") %>
+    <title>D&D project main</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header><%- include ("../reference/menu.ejs") %></header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="blackboard">
+          <div class="loginLogo">
+            <div class="mainMenuLogo">
+              <span class="teamName">D&D project</span>
+              <div class="iconText">
+                <img src="/public/icon/mainHumanIcon.png" />
+                <p>환영합니다.<%=manager%> (<%=company%>) 님.</p>
+                <p class="subTitle">Contract</p>
+                <p class="subTitle">Payment</p>
+                <br />
+                <p class="subRequest"  style="margin-right: 30px;">요청 <span>N</span> 건</p>
+                <p class="subRequest">요청 <span>N</span> 건</p>
+              </div>
+              <!--요청 n 건 위에 아이콘 동그란거 넣고 값 없으면 visibility hidden, 있으면 보이게-->
+            </div>
+          </div>
+          <div class="loginDiv">
+            <div class="board">
+              <span>공지사항</span>
+              <div class="boardList">
+                <a>- 정환진 사원이 이적했습니다.</a>
+                <a>- 새로운 기능이 추가되었습니다.</a>
+                <a>- D&D project 매출 총액이 10억을 넘었습니다.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--end main section-->
+  </body>
+</html>
+

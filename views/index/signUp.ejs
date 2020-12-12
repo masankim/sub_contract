@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head.ejs") %>
+    <title>D&D project sign up</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header -->
+      <header>
+        <div class="logo"><span>D n D</span></div>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <form action="/create_id" method="POST">
+          <div class="signBlackboard">
+            <span class="title">Sign up</span>
+            <div class="signUpLeft">
+              <div class="signUpList1">
+                <input
+                  class="signList"
+                  type="e-mail"
+                  placeholder="E-mail"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='E-mail'"
+                  name="email"
+                />
+                <button class="emailConfirm">인증번호전송</button>
+                <input
+                  class="signListBtn"
+                  type="text"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                  placeholder="인증번호"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='인증번호'"
+                />
+                <button class="emailConfirm">확 인</button>
+                <input
+                  class="signListBtn"
+                  type="password"
+                  placeholder="password"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='password'"
+                  name="password"
+                />
+                <input
+                  class="signList"
+                  type="password"
+                  placeholder="password 재확인"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='password 재확인'"
+                />
+                <input
+                  class="signList"
+                  type="text"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                  placeholder="사업자번호"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='사업자번호'"
+                  name="company_num"
+                />
+                <input
+                  class="signList"
+                  type="text"
+                  placeholder="회사명"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='회사명'"
+                  name="company_name"
+                />
+              </div>
+            </div>
+            <div class="signUpRight">
+              <div class="signUpList2">
+                <input
+                  class="signList"
+                  type="text"
+                  placeholder="이름"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='이름'"
+                  name="person_name"
+                />
+                <input
+                  class="signList"
+                  type="number"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                  placeholder="연락처"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='연락처'"
+                  name="phone"
+                />
+                <input
+                  class="signList"
+                  type="text"
+                  placeholder="회사주소"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='회사주소'"
+                  name="company_address"
+                />
+                <input
+                  class="signList"
+                  type="text"
+                  placeholder="직인"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='직인'"
+                />
+                <button type="submit">회원가입</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

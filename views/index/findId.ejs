@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head.ejs") %>
+    <title>D&D project ID/PW 찾기</title>
+  </head>
+  <body>
+    <section id="main">
+      <!--main header -->
+      <header>
+        <div class="logo"><span>D n D</span></div>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="blackboard">
+          <div class="loginLogo">
+            <div class="mainLogo">
+              <span>D&D project</span>
+            </div>
+          </div>
+          <div class="findDiv">
+            <div class="findId">
+              <h3>ID 찾기</h3>
+              <form method="POST" action="/search_id">
+                <div class="findIdInput">
+                  <input
+                    type="text"
+                    placeholder="사업자번호"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='사업자번호'"
+                    name="company_num"
+                  />
+                  <button type="submit">ID 찾기</button>
+                </div>
+              </form>
+              <p><a href="/find_pass">password 찾기</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

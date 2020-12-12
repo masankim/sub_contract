@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head.ejs") %>
+    <title>D&D project sign in</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header -->
+      <header>
+        <div class="logo"><span>DnD Subcontract Project</span></div>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="blackboard">
+          <div class="loginLogo">
+            <div class="mainLogo">
+              <span>D&D project</span>
+            </div>
+          </div>
+          <div class="loginDiv">
+            <div class="signIn">
+              <h1>Sign In</h1>
+              <form method="POST" action="/main">
+                <div class="signInInput">
+                  <input type="email" name="email" placeholder="E-mail" />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <button type="submit">Login</button>
+                </div>
+              </form>
+              <p>
+                <a href="/find_id">ID/PW 찾기</a> |
+                <a href="/signup">Sign up</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--end main section-->
+  </body>
+</html>

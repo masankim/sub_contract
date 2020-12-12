@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head2.ejs") %>
+    <title>D&D project write contract</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header -->
+      <header>
+        <%- include ("../reference/menu.ejs") %>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="signBlackboard">
+          <div class="writeTitle">
+            <span>대금정보 작성</span>
+            <p>Write contract</p>
+          </div>
+          <div class="writeContract">
+            <div class="contractLeft">
+              <form method="POST" action="/contract/confirm">
+                  <input
+                    type="text"
+                    style="display: none;"
+                    value="<%=contract_info%>"
+                    name = "a"
+                  />
+                  <input
+                    type="text"
+                    style="display: none;"
+                    value="<%=hado%>"
+                    name = "hado"
+                  />
+                  <input
+                    type="text"
+                    placeholder="선급금 입금기간 (N 일 이내)"
+                    onblur="this.placeholder='선급금 입금기간 (N 일 이내)'"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    onchange="dayChange(this);"
+                    maxlength="2"
+                    name = "b"
+                  />
+                  <input
+                    type="text"
+                    placeholder="선급금 지금 금액"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='선급금 지금 금액'"
+                    name = "c"
+                  />
+                  <input
+                    type="text"
+                    placeholder="기성금 지급 ( N ) 월"
+                    onblur="this.placeholder='기성금 지급 ( N ) 월'"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    onchange="monthChange(this);"
+                    maxlength="2"
+                    name = "d"
+                  />
+                  <input
+                    type="text"
+                    placeholder="기성금 지급 횟수 ( N ) 회"
+                    onblur="this.placeholder='기성금 지급 횟수 ( N ) 회'"
+                    name = "e"
+                  />
+                </div>
+                <div class="contractRight">
+                  <input
+                    type="text"
+                    placeholder="목적물 인수일로부터 ( N )일 이내"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='목적물 인수일로부터 ( N )일 이내'"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    maxlength="2"
+                    name = "f"
+                  />
+                  <input
+                    type="text"
+                    placeholder="기성금 지금방법 : 현금 (%)"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='기성금 지금방법 : 현금 (%)'"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    onchange="percentChange(this);"
+                    maxlength="3"
+                    name = "g"
+                  />
+                  <input
+                    type="text"
+                    placeholder="기성금 지금방법 : 어음 (%)"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='기성금 지금방법 : 어음 (%)'"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    onchange="percentChange(this);"
+                    maxlength="3"
+                    name = "h"
+                  />
+                  <input
+                    type="text"
+                    placeholder="기성금 지금방법 : 어음대체결제수단 (%)"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='기성금 지금방법 : 어음대체결제수단 (%)'"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    onchange="percentChange(this);"
+                    maxlength="3"
+                    name = "i"
+                  />
+                </div>
+              </div>
+              <div class="contractBottom">
+                <button style="margin-right: 10%;" onclick="location.href =  '/writeContract.html';">이전 페이지</button>
+                <button style="margin-right: 10%;" type="submit" class="btn2">작성 완료</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      // function insertComma(num) {
+      //   if (num.length <= 3) {
+      //     return num;
+      //   }
+      //   var count = Math.ceil(num.length / 3);
+      //   var newNum = [];
+      //   for (var i = 0; i < count; i++) {
+      //     newNum.unshift(num.slice(-3 * (i + 1), num.length - 3 * i));
+      //   }
+      //   return newNum.join(",");
+      // }
+      function percentChange(input) {
+        if (input.value < 0) input.value = 0;
+        if (input.value > 100) input.value = 100;
+      }
+      function monthChange(input) {
+        if (input.value < 0) input.value = 0;
+        if (input.value > 12) input.value = 12;
+      }
+      function dayChange(input) {
+        if (input.value < 0) input.value = 0;
+        if (input.value > 31) input.value = 31;
+      }
+      document
+        .getElementById("contractPayment")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value);
+        });
+      document
+        .getElementById("contractPayment")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value.replace(/[,]/g, ""));
+        });
+      document
+        .getElementById("contractPayment")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+      document
+        .getElementById("supplyMoney")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value);
+        });
+      document
+        .getElementById("supplyMoney")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value.replace(/[,]/g, ""));
+        });
+      document
+        .getElementById("supplyMoney")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+      document
+        .getElementById("laborCost")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value);
+        });
+      document
+        .getElementById("laborCost")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value.replace(/[,]/g, ""));
+        });
+      document
+        .getElementById("laborCost")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+    </script>
+  </body>
+</html>

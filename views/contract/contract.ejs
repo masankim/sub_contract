@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head.ejs") %>
+    <title>D&D project main</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header>
+        <%- include ("../reference/menu.ejs") %>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="signBlackboard">
+          <div class="writeTitle">
+            <span>기본정보 작성</span>
+            <p>Write contract</p>
+          </div>
+          <div class="writeContract">
+            <div class="contractLeft">
+              <form method="POST" action="/contract/detail">
+                  <input
+                  type="text"
+                  placeholder="문서번호"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='문서번호'"
+                  name = "a"
+                  />
+                  <input
+                    type="text"
+                    placeholder="발주자"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='발주자'"
+                    name = "b"
+                  />
+                  <input
+                    type="text"
+                    placeholder="도급공사명"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='도급공사명'"
+                    name = "c"
+                  />
+                  <input
+                    type="text"
+                    placeholder="하도급공사명"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='하도급공사명'"
+                    name = "d"
+                  />
+                  <input
+                    type="text"
+                    placeholder="하도급공사 등록업종"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='하도급공사 등록업종'"
+                    name = "e"
+                  />
+                  <input
+                    type="text"
+                    placeholder="공사장소"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='공사장소'"
+                    name = "f"
+                  />
+                </div>
+                <div class="contractRight">
+                  <input
+                  type="text"
+                  placeholder="하도급 업체명"
+                  onfocus="this.placeholder= ''"
+                  onblur="this.placeholder='하도급 업체명'"
+                  name = "l"
+                />
+                  <input
+                    type="text"
+                    placeholder="공사기간 착공 (yyyymmdd)"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='공사기간 착공 (yyyymmdd)'"
+                    maxlength="8"
+                    name = "g"
+                  />
+                  <input
+                    type="text"
+                    placeholder="공사기간 준공 (yyyymmdd)"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='공사기간 준공 (yyyymmdd)'"
+                    maxlength="8"
+                    name = "h"
+                  />
+                  <input
+                    type="text"
+                    id="contractPayment"
+                    placeholder="계약금액"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='계약금액'"
+                    name = "i"
+                  />
+                  <input
+                    type="text"
+                    id="supplyMoney"
+                    placeholder="공급가액"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='공급가액'"
+                    name = "j"
+                  />
+                  <input
+                    type="text"
+                    id="laborCost"
+                    placeholder="노무비"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='노무비'"
+                    name = "k"
+                  />
+                </div>
+              </div>
+              <div class="contractBottom">
+                <button type="submit">다음 페이지</button>
+            </form>   
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      // function insertComma(num) {
+      //   if (num.length <= 3) {
+      //     return num;
+      //   }
+      //   var count = Math.ceil(num.length / 3);
+      //   var newNum = [];
+      //   for (var i = 0; i < count; i++) {
+      //     newNum.unshift(num.slice(-3 * (i + 1), num.length - 3 * i));
+      //   }
+      //   return newNum.join(",");
+      // }
+
+      // document
+      //   .getElementById("contractPayment")
+      //   .addEventListener("keyup", function (event) {
+      //     this.value = insertComma(this.value);
+      //   });
+      // document
+      //   .getElementById("contractPayment")
+      //   .addEventListener("keyup", function (event) {
+      //     this.value = insertComma(this.value.replace(/[,]/g, ""));
+      //   });
+      document
+        .getElementById("contractPayment")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+      // document
+      //   .getElementById("supplyMoney")
+      //   .addEventListener("keyup", function (event) {
+      //     this.value = insertComma(this.value);
+      //   });
+      // document
+      //   .getElementById("supplyMoney")
+      //   .addEventListener("keyup", function (event) {
+      //     this.value = insertComma(this.value.replace(/[,]/g, ""));
+      //   });
+      document
+        .getElementById("supplyMoney")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+      // document
+      //   .getElementById("laborCost")
+      //   .addEventListener("keyup", function (event) {
+      //     this.value = insertComma(this.value);
+      //   });
+      // document
+      //   .getElementById("laborCost")
+      //   .addEventListener("keyup", function (event) {
+      //     this.value = insertComma(this.value.replace(/[,]/g, ""));
+      //   });
+      document
+        .getElementById("laborCost")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head.ejs") %>
+    <title>D&D project ID/PW 찾기</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header -->
+      <header>
+        <div class="logo"><span>D n D</span></div>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="blackboard">
+          <div class="loginLogo">
+            <div class="mainLogo">
+              <span>D&D project</span>
+            </div>
+          </div>
+          <div class="findDiv">
+            <div class="findPw">
+              <h3>PW 찾기</h3>
+              <form method="POST" action="/search_pass">
+                <div class="findIdInput">
+                  <input
+                    type="email"
+                    placeholder="E-mail"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='E-mail'"
+                    name="email"
+                  />
+                  <input
+                    type="text"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    placeholder="사업자번호"
+                    onfocus="this.placeholder= ''"
+                    onblur="this.placeholder='사업자번호'"
+                    name="company_num"
+                  />
+
+                  <button>password 찾기</button>
+                </div>
+              </form>
+              <p><a href="/find_id">id 찾기</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--end main section-->
+  </body>
+</html>

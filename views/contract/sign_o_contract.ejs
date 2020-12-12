@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head2.ejs") %>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <title>D&D project main</title>
+    <script>
+        function numberToKorean(number){
+            var inputNumber  = number < 0 ? false : number;
+            var unitWords    = ['', '만', '억', '조', '경'];
+            var splitUnit    = 10000;
+            var splitCount   = unitWords.length;
+            var resultArray  = [];
+            var resultString = '';
+
+            for (var i = 0; i < splitCount; i++){
+                var unitResult = (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+                unitResult = Math.floor(unitResult);
+                if (unitResult > 0){
+                    resultArray[i] = unitResult;
+                }
+            }
+
+            for (var i = 0; i < resultArray.length; i++){
+                if(!resultArray[i]) continue;
+                resultString = String(resultArray[i]) + unitWords[i] + resultString;
+            }
+
+            return resultString;
+        }
+        document
+         .getElementById("test1").write("123456789");
+  </script>
+  </head>
+  <body onload="numberToKorean('<%= contract_info[8] %>');">
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header><%- include ("../reference/menu.ejs") %></header>
+      <!--end main header -->
+      <div class="paperContainer">
+        <form method="POST" action="/contract/sign2_o">
+          <div class="paper">
+            <input
+              type="text"
+              style="display: none;"
+              value="<%=contract_info%>"
+              name = "a"
+            />
+            <div class="paperTitle">
+              <p>건설업종 표준하도급계약서</p>
+            </div>
+            <div class="workInfo">
+              <p id="docNum" style="padding-right:5px;">문서번호 : <%=contract_info[0] %> </p>
+              <p>1. 발주자 : <%=contract_info[1] %> </p>
+              <p>૦ 도급공사명 : <%=contract_info[2] %> </p>
+              <p>2. 하도급공사명 : <%= contract_info[3] %></p>
+              <p>૦ 하도급공사 등록업종 : <%= contract_info[4] %></p>
+              <p>3. 공사장소 : <%=contract_info[5] %></p>
+              <p>4. 공사기간 : 착공 <%=contract_info[6].slice(0,4)%>년 <%=contract_info[6].slice(4,6)%>월 <%=contract_info[6].slice(6,8)%>일 ~ 준공 <%=contract_info[7].slice(0,4) %>년 <%=contract_info[7].slice(4,6) %>월 <%=contract_info[7].slice(6,8) %>일</p>
+              <p id="test1">5. 계약금액 : <%=contract_info[8] %> 원</p>
+              <p>૦ 공급가액 : <%=contract_info[9] %> 원</p>
+              <p>૦ 노무비 : <%=contract_info[10] %> 원</p>
+              <p>건설산업기본법 시행령 제 84조 규정에 의한 노무비</p>
+            </div>
+            <div class="moneyInfo">
+              <br><br><br>
+              <p>6. 대금의 지급</p>
+              <p>가. 선급금</p>
+              <p>૦ 계약체결 후 ( <%=contract_info[11] %> ) 일 이내에 일금 원정( ₩ <%=contract_info[12] %> )</p>
+              <p>
+                ※발주자로부터 선급금을 지급받은 날 또는 계약일로부터 15일 이내
+                그 내용과 비율에 따름.
+              </p>
+              <p>(1) ( <%=contract_info[13] %> )월 ( <%=contract_info[14] %> ) 회</p>
+              <p>(2) 목적물 인수일로부터 ( <%=contract_info[15] %> )일 이내</p>
+              <p>지급방법 : 현금 <%=contract_info[16] %>%, 어음 <%=contract_info[17] %>%, 어음대체결제수단 <%=contract_info[18] %>%</p>
+              <p style="padding-right:5px;">
+                ※발주자로부터 지급받은 현금비율 이상 지급, 지급 받은 어음 등의
+                지급기간을 초과하지 않는 어음 등을 교부.
+              </p>
+            </div>
+            <div class="paperBottom">
+              <br>
+              <button type="submit">서명하기</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

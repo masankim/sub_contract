@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head2.ejs") %>
+    <title>D&D project main</title>
+  </head>
+  <script>
+    function sign_contract(contract_num){
+      location.href = "/contract/sign?contract_num="+contract_num;
+    }
+    function confirm_contract(contract_num){
+      location.href = "/contract/sign_o?contract_num="+contract_num;
+    }
+    function view_contract(contract_num){
+      location.href = "/contract/view?contract_num="+contract_num;
+    }
+    function refuse_contract(contract_num){
+      location.href = "/contract/refuse/"+contract_num;
+    }
+  </script>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header>
+        <%- include ("../reference/menu.ejs") %>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="paymentCompany">
+            <h1>View contract</h1>
+            <div class="payBlackboard">
+                <h2>Contract list</h2>
+                <div class=content>
+                        <table>
+                          <tr>
+                            <th>#</th>
+                            <th>도급 공사명</th>
+                            <th>계약 담당자</th>
+                            <th>하급 공사명</th>
+                            <th>총 계약 금액</th>
+                            <th>진행 상황</th>
+                          </tr>
+                          <%
+                          console.log(contract_info);
+                          console.log(contract_state);
+                          if (contract_info.length == 0){ %>
+                            <tr style="cursor:pointer;">
+                              <td colspan="6">거래 내역이 없습니다.</td>
+                            </tr>
+                          <%} else { for(var i=0; i < contract_info.length; i++) {
+                            if(contract_state[i] == 0){%>
+                              <tr style="cursor:pointer;" onclick="sign_contract('<%=contract_info[i][0]%>')">
+                              <%} else if(contract_state[i] == 1){%>
+                              <tr style="cursor:pointer;" onclick="confirm_contract('<%=contract_info[i][0]%>')">
+                              <%} else if(contract_state[i] == 2){%>
+                              <tr style="cursor:pointer;" onclick="view_contract('<%=contract_info[i][0]%>')">
+                              <%} else {%>
+                              <tr style="cursor:pointer;" onclick="refuse_contract('<%=contract_info[i][0]%>')">
+                              <%}%>
+                            <td><%=i+1%></td>
+                            <td><%=contract_info[i][2]%></td>
+                            <td><%=contract_info[i][1]%></td>
+                            <td><%=contract_info[i][3]%></td> 
+                            <td><%=contract_info[i][8]%></td>
+                            <%if(contract_state[i] == 0){%>
+                            <td>발송</td>
+                            <%} else if(contract_state[i] == 1){%>
+                            <td>하청 사인</td>
+                            <%} else if(contract_state[i] == 2){%>
+                            <td>계약 완료</td>
+                            <%} else {%>
+                            <td>수정 요청</td>
+                            <%}%>
+                          </tr>
+                          <%}}%>
+                        </table>
+                    </div>
+                 </div>
+            </body>
+        </body>
+        </div>
+        </div>
+        </div>  
+      </div>
+    </section>
+    <!--end main section-->
+  </body>
+</html>

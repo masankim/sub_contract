@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head2.ejs") %>
+    <title>D&D project main</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header>
+        <%- include ("../reference/menu.ejs") %>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="payBlackboard">
+          <div class="writeTitle">
+            <span>Request Payment</span>
+            <p id="payTitle">Payment</p>
+          </div>
+              <div class=content>
+                <table>
+                  <tr>
+                    <th>문서 번호</th>
+                    <th>회사명</th>
+                    <th>계약 담당자</th>
+                    <th>계약금</th>
+                  </tr>
+                  <tr>
+                    <!-- 첫번째 줄 시작 -->
+                     <td><%=contract_info[0]%></td>
+                     <td><%=contract_info[1]%></td>
+                     <td><%=contract_info[3]%></td>
+                     <td><%=contract_info[2]%> 원</td>
+                  </tr><!-- 두번째 줄 끝 -->
+                </table>
+              </div>
+              <form method="POST" action="/payment/pay">
+                <div class="left1">
+                  <input type="text" style="display: none;" name="contract_num" value="<%=contract_info[0]%>">
+                    <input type="text" name="ready_made_cost" placeholder="기성금 신청금액을 입력해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='기성금 신청금액을 입력해주세요.'">
+                    <input type="text" name="labor_cost" placeholder="노무금 신청금액을 입력해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='노무금 신청금액을 입력해주세요.'">
+                    <input type="text" name="exception_cost" placeholder="예외금 신청금액을 입력해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='예외금 신청금액을 입력해주세요.'">
+                </div>
+                <div class="right1">
+                  <textarea name="etc" placeholder="기성금, 노무금, 예외금 등 특별신청 사유를 작성해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='기성금, 노무금, 예외금 등 특별신청 사유를 작성해주세요.'"></textarea> <!--db or bc 저장-->
+                </div>
+                <button type="submit">작성 완료</button>
+              </form>
+            </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      function insertComma(num) {
+        if (num.length <= 3) {
+          return num;
+        }
+        var count = Math.ceil(num.length / 3);
+        var newNum = [];
+        for (var i = 0; i < count; i++) {
+          newNum.unshift(num.slice(-3 * (i + 1), num.length - 3 * i));
+        }
+        return newNum.join(",");
+      }
+      function percentChange(input) {
+        if (input.value < 0) input.value = 0;
+        if (input.value > 100) input.value = 100;
+      }
+      function monthChange(input) {
+        if (input.value < 0) input.value = 0;
+        if (input.value > 12) input.value = 12;
+      }
+      function dayChange(input) {
+        if (input.value < 0) input.value = 0;
+        if (input.value > 31) input.value = 31;
+      }
+        document
+        .getElementById("forComma")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value);
+        });
+      document
+        .getElementById("forComma")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value.replace(/[,]/g, ""));
+        });
+      document
+        .getElementById("forComma")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+        document
+        .getElementById("forComma2")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value);
+        });
+      document
+        .getElementById("forComma2")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value.replace(/[,]/g, ""));
+        });
+      document
+        .getElementById("forComma2")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+        document
+        .getElementById("forComma3")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value);
+        });
+      document
+        .getElementById("forComma3")
+        .addEventListener("keyup", function (event) {
+          this.value = insertComma(this.value.replace(/[,]/g, ""));
+        });
+      document
+        .getElementById("forComma3")
+        .addEventListener("keyup", function (event) {
+          this.value = this.value.replace(/^[0]|[^0-9,]/g, "");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head2.ejs") %>
+    <title>D&D project confirm request payment</title>
+  </head>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header -->
+      <header>
+        <div class="mainLogo"><span>로고 및 회사명</span></div>
+        <ul class="mainNav">
+          <li>Home</li>
+          <li>Contract</li>
+          <li>Payment</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li id="welcome">환영합니다. 원도급님.</li>
+        </ul>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="payBlackboard">
+          <div class="writeTitle">
+            <span>Payment list</span>
+            <p id="payTitle">Payment</p>
+          </div>
+          <div class="content">
+            <table>
+              <tr>
+                <th>#</th>
+                <th>회사명</th>
+                <th>계약 담당자</th>
+                <th>계약일</th>
+                <th>계약금</th>
+              </tr>
+              <tr>
+                <!-- 첫번째 줄 시작 -->
+                <td>1</td>
+                <td>삼성중공업</td>
+                <td>김승빈</td>
+                <td>2020.09.24</td>
+                <td>300,000,000 원</td>
+              </tr>
+              <!-- 두번째 줄 끝 -->
+            </table>
+          </div>
+          <div class="requestText">
+            <textarea cols="140px;" rows="13px" readonly>
+<!--특별 예외금 신청 내역이 여기에 나와야 됩니다.-->
+            </textarea>
+          </div>
+          <div class="twoBtn">
+            <button>요청 승인</button>
+            <a href="confirm_request_payment_reject.html"
+              ><button class="btn2">반려</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

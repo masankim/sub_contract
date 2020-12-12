@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include ("../reference/head2.ejs") %>
+    <title>D&D project main</title>
+  </head>
+  <script>
+    function payment_list(contract_num){
+      location.href = "/payment/p_list?contract_num="+contract_num;
+    }
+  </script>
+  <body>
+    <!--main section-->
+    <section id="main">
+      <!--main header (로그인 전 화면이랑 ejs 따로 저장.) -->
+      <header>
+        <%- include ("../reference/menu.ejs") %>
+      </header>
+      <!--end main header -->
+      <div class="main container">
+        <div class="paymentCompany">
+            <h1>View list</h1>
+            <div class="payBlackboard">
+                <h2>Contract list</h2>
+                <div class=content>
+                        <table>
+                          <tr>
+                            <th>#</th>
+                            <th>도급 공사명</th>
+                            <th>계약 담당자</th>
+                            <th>하급 공사명</th>
+                            <th>총 계약 금액</th>
+                          </tr>
+                          <%
+                          console.log(contract_info);
+                          console.log(contract_state);
+                          if (contract_info.length == 0){ %>
+                            <tr>
+                              <td colspan="5">지급 내역이 없습니다.</td>
+                            </tr>
+                          <%} else { for(var i=0; i < contract_info.length; i++) {
+                            if(contract_state[i] == 2){%>
+                            <tr style="cursor:pointer;" onclick="payment_list('<%=contract_info[i][0]%>')">
+                            <td><%=i+1%></td>
+                            <td><%=contract_info[i][2]%></td>
+                            <td><%=contract_info[i][1]%></td>
+                            <td><%=contract_info[i][3]%></td> 
+                            <td><%=contract_info[i][8]%></td>
+                            <%}%>
+                          </tr>
+                          <%}}%>
+                        </table>
+                    </div>
+                 </div>
+            </body>
+        </body>
+        </div>
+        </div>
+        </div>  
+      </div>
+    </section>
+    <!--end main section-->
+  </body>
+</html>
